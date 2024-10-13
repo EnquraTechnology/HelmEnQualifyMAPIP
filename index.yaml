@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  enqualifymapip:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-13T17:37:44.602199211+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 575123e4b6a827a1f18ca46d3d48e99ec9d1ad6b05882a3cdf31c02843fc53f5
+    name: enqualifymapip
+    type: application
+    urls:
+    - enqualifymapip-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-10-13T17:37:44.600113752+03:00"
