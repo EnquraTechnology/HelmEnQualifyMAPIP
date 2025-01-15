@@ -1,0 +1,55 @@
+
+namespace: enqualifyapp
+
+# Image
+image:
+  repository: dockerhub.io/enqurainc/enqualify-mapip
+  tag: "20240813.1"
+  pullPolicy: IfNotPresent
+
+# Replica
+replicaCount: 1
+
+# Service
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+# Image
+imagePullSecrets:
+  - name: dockerhubsecret
+
+# Deployment
+strategy:
+  type: Recreate
+
+# Container
+containerPorts:
+  http: 8080
+
+# Volume
+volumes:
+  appsettingsjs:
+    configMap: enqualify-mapip
+  videopvc:
+    persistentVolumeClaim:
+      claimName: enqualify-mapip-claim
+
+# Volume
+volumeMounts:
+  appsettingsjs:
+    mountPath: /opt/app-root/app/appsettings.json
+    subPath: appsettings.json
+
+# Uygulama
+application:
+  settings:
+    ServiceBase: ""
+  tokens:
+    auth:
+      jwt:
+        key: ""
+    request:
+      sign:
+        key: ""
