@@ -3,8 +3,8 @@ namespace: enqualifyapp
 
 # Image
 image:
-  repository: dockerhub.io/enqurainc/enqualify-mapip
-  tag: "20240813.1"
+  repository: ""
+  tag: ""
   pullPolicy: IfNotPresent
 
 # Replica
@@ -16,9 +16,10 @@ service:
   port: 8080
   targetPort: 8080
 
-# Image
-imagePullSecrets:
-  - name: dockerhubsecret
+# Ingress
+ingressClassName: nginx
+rules:
+  host: enqualifymapip.example.com
 
 # Deployment
 strategy:
@@ -36,16 +37,10 @@ volumes:
     persistentVolumeClaim:
       claimName: enqualify-mapip-claim
 
-# Volume
-volumeMounts:
-  appsettingsjs:
-    mountPath: /opt/app-root/app/appsettings.json
-    subPath: appsettings.json
-
 # Uygulama
 application:
   settings:
-    ServiceBase: ""
+    ServiceBase: "" #enqualify-mapi'nin url https://......../ şeklinde eklenmelidir.
   tokens:
     auth:
       jwt:

@@ -60,10 +60,10 @@ spec:
           timeoutSeconds: 30
         volumeMounts:
         - name: appsettingsjs
-          mountPath: {{ .Values.volumeMounts[0].mountPath }}
-          subPath: {{ .Values.volumeMounts[0].subPath }}
-      imagePullSecrets:
-      - name: {{ .Values.imagePullSecrets[0].name }}
+          mountPath: /opt/app-root/app/appsettings.json
+          subPath: appsettings.json
+      #imagePullSecrets:
+      #- name: 
       volumes:
       - name: appsettingsjs
         configMap:
